@@ -1,0 +1,20 @@
+.Home{
+    flex: 1;
+    flex-direction: column;
+    position:relative;
+    /* min-width: 00px; */
+    min-height: 88vh;
+    max-height:88vh;
+
+    background-color: #141414;
+    color: white;
+    overflow-y: scroll;
+
+}
+
+@media screen and (max-width:770px) {
+    .Home{
+        min-height: 100vh;
+        max-height: 100vh;
+    }
+}

@@ -1,0 +1,9 @@
+.sections{
+    display: grid;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    max-width: 100%;
+    background-color: rgb(80, 198, 82);
+}
+

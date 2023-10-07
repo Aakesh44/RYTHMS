@@ -1,0 +1,141 @@
+.ControllBar{
+    position: absolute;
+    display: grid;
+    /* grid-template-columns: 1fr; */
+    bottom: 0;left: 0;right:0;
+    height: 11vh;
+    background-color: rgb(0, 0, 0);
+  }
+
+.ControllBar > section{
+  height: 100%;
+}
+
+
+
+.icons{
+  color: rgb(205, 209, 212);
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+}
+.icons:hover{
+  color: rgb(255, 255, 255);
+  scale: 1.05;
+}
+
+
+.controllsection2{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sec2icons{
+  height: 35px;
+  width: 35px;
+  color: rgb(205, 209, 212);
+}
+.sec2icons:hover{
+  color: white;
+}
+
+.timebar{
+  height: 4px;
+  width: 75%;
+  background-color: rgb(70, 70, 70);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.timetrack{
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+/* .timetrack:hover{
+  background-color: #1db954;
+} */
+.timeball{
+  min-height: 12px;
+  min-width: 12px;
+  background: #ffffff;
+  border-radius: 100%;
+}
+
+.controllsection3aside{
+  height: 100%;
+  width: 60%;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #000000;
+}
+
+
+.controllsection3aside > .icons :hover{
+  color: white;
+}
+
+
+
+.soundbar{
+  height: 3px;
+  width: 90px;
+  background-color: rgb(70,70,70);
+  border-radius: 5%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+}
+.soundtrack{
+  height: 100%;
+  width: 1px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  
+}
+.soundtrack:hover{
+  background-color: #1db954;
+}
+.soundball{
+  min-height: 12px;
+  min-width: 12px;
+  background: #ffffff;
+  border-radius: 100%;
+}
+
+.controllSignup{
+  width: 100%;
+  background: linear-gradient(to right, #e85fdc, #bf85f1, #709ae2);
+}
+
+
+
+@media screen and (max-width:1200px) {
+  .controllsection3aside{
+    width: 100%;
+  }
+  .ControllBar{
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width:770px) {
+  .ControllBar{
+    display: none;
+  }
+
+
+}

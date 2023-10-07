@@ -1,0 +1,46 @@
+.FeedCard{
+    background-color: #1e1d1d;
+    cursor: pointer;
+}
+.FeedCard:hover{
+    background-color: #292929;
+}
+
+
+
+.Mobilecards{
+    max-height: 190px;
+    max-width: 160px;   
+    min-height: 190px;
+    min-width: 160px;
+    margin-left: 12px;
+    padding: 5px;
+    font-size:medium;
+    font-weight: 700;
+    color: white;
+    text-align: start;
+    border-radius: 12px;
+    display: grid;
+    grid-row: 4fr 1fr;
+}
+.Mobilecards:hover{
+    background-color: #171717;
+}
+
+.MobilecardsImg{
+    border-radius: 10px;
+}
+
+/* @media screen and (max-width:640px) {
+    .FeedCard{
+     background-color: brown;
+     margin-left: 12px;
+    }
+
+ } */
+
+ @media screen and (min-width:640px) {
+    .Mobilecards{
+        display: none;
+    }
+ }

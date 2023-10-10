@@ -26,7 +26,7 @@ const {handleUser,setMainUser} = useContext(DataContext)
         }
         
         const response = await axios.post(
-            "http://localhost:3500/log-in",
+            "https://rythms-three.vercel.app/log-in",
             {
                 email: email,
                 password: password

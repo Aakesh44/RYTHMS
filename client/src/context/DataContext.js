@@ -76,7 +76,7 @@ export const DataProvider = ({children}) =>{
     const handleGetUser = async () =>{
         try {
             // console.log(userData._id);
-            const userRes = await axios.get(`http://localhost:3500/profiles/${userData._id}`)
+            const userRes = await axios.get(`https://rythms-three.vercel.app/profiles/${userData._id}`)
             const userD =  await userRes.data;
             setMainUser(userD.user)
             // console.log(userD.user);
@@ -97,20 +97,20 @@ export const DataProvider = ({children}) =>{
         try {
             
             // const [songsRes,profilesRes,artistsRes,albumsRes,playlistsRes] = await Promise.all([
-            //     axios.get('http://localhost:3500/songs'),
-            //     axios.get('http://localhost:3500/profiles'),
-            //     axios.get('http://localhost:3500/artists'),
-            //     axios.get('http://localhost:3500/albums'),
-            //     axios.get('http://localhost:3500/playlists') 
+            //     axios.get('https://rythms-three.vercel.app/songs'),
+            //     axios.get('https://rythms-three.vercel.app/profiles'),
+            //     axios.get('https://rythms-three.vercel.app/artists'),
+            //     axios.get('https://rythms-three.vercel.app/albums'),
+            //     axios.get('https://rythms-three.vercel.app/playlists') 
             // ]);
 
-            const songsRes      = await axios.get("http://localhost:3500/songs")
-            const profilesRes   = await axios.get("http://localhost:3500/profiles")
-            const artistsRes    = await axios.get("http://localhost:3500/artists")
-            const albumsRes     = await axios.get("http://localhost:3500/albums")
-            const playlistsRes  = await axios.get("http://localhost:3500/playlists")
+            const songsRes      = await axios.get("https://rythms-three.vercel.app/songs")
+            const profilesRes   = await axios.get("https://rythms-three.vercel.app/profiles")
+            const artistsRes    = await axios.get("https://rythms-three.vercel.app/artists")
+            const albumsRes     = await axios.get("https://rythms-three.vercel.app/albums")
+            const playlistsRes  = await axios.get("https://rythms-three.vercel.app/playlists")
             // if(userData){
-            //     const userRes = await axios.get(`http://localhost:3500/profiles/${userData._id}`)
+            //     const userRes = await axios.get(`https://rythms-three.vercel.app/profiles/${userData._id}`)
             //     const userD =  await userRes.data;
             //     setMainUser(userD.user)
             // }
@@ -149,7 +149,7 @@ async function handleLikeSong(songId) {
         }
     }
     const response = await axios.put(
-      "http://localhost:3500/like-song",
+      "https://rythms-three.vercel.app/like-song",
       {
         userId:mainUser._id,
         songId:songId
@@ -174,7 +174,7 @@ async function handleLikeSong(songId) {
         }
 
         const response = await axios.put(
-            "http://localhost:3500/dislike-song",
+            "https://rythms-three.vercel.app/dislike-song",
             {
               userId:mainUser._id,
               songId:songId
@@ -200,7 +200,7 @@ async function handleLikeSong(songId) {
             }
 
             const response = await axios.put(
-                "http://localhost:3500/add-album",
+                "https://rythms-three.vercel.app/add-album",
                 {
                     userId:mainUser._id,
                     albumId:albumId
@@ -226,7 +226,7 @@ async function handleLikeSong(songId) {
             }
 
             const response = await axios.put(
-                "http://localhost:3500/remove-album",
+                "https://rythms-three.vercel.app/remove-album",
                 {
                     userId:mainUser._id,
                     albumId:albumId
@@ -252,7 +252,7 @@ async function handleLikeSong(songId) {
             }
 
             const response = await axios.put(
-                "http://localhost:3500/add-playlist",
+                "https://rythms-three.vercel.app/add-playlist",
                 {
                     userId:mainUser._id,
                     playlistId:playlistId
@@ -278,7 +278,7 @@ async function handleLikeSong(songId) {
             }
 
             const response = await axios.put(
-                "http://localhost:3500/remove-playlist",
+                "https://rythms-three.vercel.app/remove-playlist",
                 {
                     userId:mainUser._id,
                     playlistId:playlistId
@@ -306,7 +306,7 @@ async function handleLikeSong(songId) {
             }
 
             const response = await axios.post(
-                "http://localhost:3500/create-playlist",
+                "https://rythms-three.vercel.app/create-playlist",
                 {
                     userId : mainUser._id,
                     title :`My Playlist ${count+1}`
@@ -333,7 +333,7 @@ async function handleLikeSong(songId) {
             }
 
             const response = await axios.put(
-                "http://localhost:3500/delete-playlist",
+                "https://rythms-three.vercel.app/delete-playlist",
                 {   
                     userId:mainUser._id,
                     playlistId: playlistId
@@ -360,7 +360,7 @@ async function handleLikeSong(songId) {
             }
 
             const response = await axios.put(
-                "http://localhost:3500/edit-playlist",
+                "https://rythms-three.vercel.app/edit-playlist",
                 {   
                     title:title,
                     playlistId: playlistId
@@ -386,7 +386,7 @@ async function handleLikeSong(songId) {
                 }
             }
             const response = await axios.put(
-                "http://localhost:3500/push-playlist",
+                "https://rythms-three.vercel.app/push-playlist",
                 {
                     songId:songId,
                     playlistId:playlistId
@@ -410,7 +410,7 @@ async function handleLikeSong(songId) {
                 }
             }
             const response = await axios.put(
-                "http://localhost:3500/pull-playlist",
+                "https://rythms-three.vercel.app/pull-playlist",
                 {
                     songId:songId,
                     playlistId:playlistId
@@ -435,7 +435,7 @@ async function handleLikeSong(songId) {
                 }
             }
             const response = await axios.put(
-                "http://localhost:3500/edit-profile",
+                "https://rythms-three.vercel.app/edit-profile",
                 {
                     userId:userId,
                     name:name
@@ -460,7 +460,7 @@ async function handleLikeSong(songId) {
             }
 
             const response = await axios.put(
-                "http://localhost:3500/follow",
+                "https://rythms-three.vercel.app/follow",
                 {
                     mainId:mainId,
                     userId:userId
@@ -485,7 +485,7 @@ async function handleLikeSong(songId) {
             }
 
             const response = await axios.put(
-                "http://localhost:3500/unfollow",
+                "https://rythms-three.vercel.app/unfollow",
                 {
                     mainId:mainId,
                     userId:userId
@@ -524,7 +524,7 @@ async function handleLikeSong(songId) {
 
     async function getSongIds() {
         try {
-            const songIdsRes       = await axios.get("http://localhost:3500/songIds")
+            const songIdsRes       = await axios.get("https://rythms-three.vercel.app/songIds")
             const songsIdsData  = await songIdsRes.data
             setCurSongIds(songsIdsData)
             // console.log('ji');

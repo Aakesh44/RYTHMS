@@ -77,7 +77,7 @@ const SignUpForm = () => {
       }
     
       const response = await axios.post(
-          "http://localhost:3500/sign-up",
+          "https://rythms-three.vercel.app/sign-up",
           {
               email:email,
               password: password,

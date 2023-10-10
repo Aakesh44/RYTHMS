@@ -6,8 +6,8 @@ async function getAlbums(req,res) {
         const albums =await Album.find()
         res.json(albums)
 
-    } catch (error) {
-        
+    } catch (err) {
+        res.status(500).json(`Error:${err.message}`)
     }
 }
 

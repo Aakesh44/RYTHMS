@@ -560,7 +560,7 @@ async function handleLikeSong(songId) {
         setCurIndex(0)
     }
 
-    
+    const [nowPlayView,setNowPlayView] = useState(false)
 
     return(
         <DataContext.Provider 
@@ -617,7 +617,10 @@ async function handleLikeSong(songId) {
             curSongI,
             
             updateSong,
-            updateList
+            updateList,
+
+            nowPlayView,
+            setNowPlayView
 
         }}>
             {children}

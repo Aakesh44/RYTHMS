@@ -60,27 +60,6 @@ router.route('/dislike-song').put(likeSong.disLikeSong)
 router.route('/artists').get(artistCont)
 
 
-const Albums  =  require('../model/album')
-
-
-async function createArtist(req,res) {
-    // console.log(req.body);
-    try {
-        // console.log(req.body);
-        const song = req.body
-
-        const song1 = await Albums.create(song)
-
-        const art = await Albums.findById(song1._id)
-        if(art) res.json(art)
-
-    } catch (err) {
-            res.status(500).json(`Error: ${err.message}`)
-    }
-}
-
-
-router.route('/create-song').post(createArtist)
 
 
 module.exports = router

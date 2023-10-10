@@ -1,11 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import {AiOutlineClose} from 'react-icons/ai'
 import {BsHeart,BsThreeDots,BsMusicNote,BsFillPlayFill} from 'react-icons/bs'
 
 import song from '../images/song.jpg'
+import DataContext from '../context/DataContext'
 const NowPlaying = ({setNowSize}) => {
 
-  const [display,setDisplay] = useState(true)
+  const {nowPlayView,setNowPlayView} = useContext(DataContext)
+
+  // const [display,setDisplay] = useState(true)
+
   const [queueHover,setQueueHover] =useState(false)
 
   const [nowWidth,setNowWidth] =useState(288)
@@ -34,12 +38,12 @@ const NowPlaying = ({setNowSize}) => {
   return (
     <main 
     ref={nowPlay}
-    style={{minHeight:'88vh',display:!display && 'none'}} 
-    className=' hidden w-72 p-4 bg-black h-full flex flex-col gap-4'>
+    style={{minHeight:'88vh',}} 
+    className={`w-72 p-4 bg-black h-full flex-col gap-4 hidden xl:${!nowPlayView ? 'hidden' : 'flex'}`}>
       
       <header className='flex items-center justify-between'>
         <h1 className=' text-lg font-semibold Textwhite'>Pookkal Pookkum</h1>
-        <AiOutlineClose onClick={()=>setDisplay(false)} className='h-5 w-5 Textgrey cursor-pointer'/>
+        <AiOutlineClose onClick={()=>setNowPlayView(!nowPlayView)} className='h-5 w-5 Textgrey cursor-pointer'/>
       </header>
 
       <section className=' aspect-square'>

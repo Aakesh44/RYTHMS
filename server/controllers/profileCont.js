@@ -5,19 +5,24 @@ async function getProfile(req,res) {
     try {
         const users =await User.find()
         res.json(users)
-    } catch (error) {
-        
+    } catch (err) {
+        res.status(500).json(`Error:${err.message}`)
     }
 }
 
 async function getUser(req,res) {
-    
+    try {
+
     const user = await User.findById(req.params.id)
 
     if(!user){
         res.json('user doest exist')
     }
     res.json({user})
+            
+    } catch (err) {
+        res.status(500).json(`Error:${err.message}`)
+    }
 }
 
 async function editUser(req,res) {

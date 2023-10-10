@@ -5,8 +5,8 @@ async function getSongs(req,res) {
     try {
         const songs = await Songs.find()
         res.json(songs)
-    } catch (error) {
-        
+    } catch (err) {
+        res.status(500).json(`Error:${err.message}`)
     }
 }
 
@@ -19,7 +19,7 @@ async function getSongIds(req,res){
         res.json(songsIds)
 
     } catch (err) {
-        
+        res.status(500).json(`Error:${err.message}`)
     }
 }
 module.exports = {getSongs,getSongIds}

@@ -5,7 +5,14 @@ const mongoose = require('mongoose')
 
 const approute = require('./routes/approute')
 
-app.use(cors())
+app.use(cors(
+    {
+        origin:["https://rythms-music-player.vercel.app"],
+        methods:['GET','POST', 'PUT', 'DELETE'],
+        credentials: true
+    }
+))
+
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 

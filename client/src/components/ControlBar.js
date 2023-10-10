@@ -13,7 +13,7 @@ import DataContext from '../context/DataContext';
 
 const ControlBar = () => {
 
-  const {userData,curSongIds,setCurSongIds,curIndex,setCurIndex,curSongI,allArtists,allSongs} = useContext(DataContext)
+  const {userData,curSongIds,setCurSongIds,curIndex,setCurIndex,curSongI,allArtists,allSongs,nowPlayView,setNowPlayView} = useContext(DataContext)
 
 
   const [isShuffle, setIsShuffle] = useState(false)
@@ -341,6 +341,7 @@ const ControlBar = () => {
 
         <span 
           className=' relative hidden lg:block'
+          onClick={()=>setNowPlayView(!nowPlayView)}
           onMouseEnter={()=>handleiconhover('Now playing view')}
           onMouseLeave={handleiconleave}>
           <AiOutlinePlaySquare  className='icons h-3 w-3 lg:h-5 lg:w-5'/>

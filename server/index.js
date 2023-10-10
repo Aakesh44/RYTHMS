@@ -21,47 +21,8 @@ async function main() {
 }
 main() 
 
+app.get('/',(req,res)=>res.json('server is running'))
 app.use('/',approute)
-
-// const Songs = require('./model/songs')
-
-// async function songCreate(req,res) {
-    
-//     try {
-
-//         const song = req.body
-
-//         Songs.create(song)
-
-//         res.json(song)
-
-//     } catch (err) {
-//             res.status(500).json(`Error: ${err.message}`)
-//     }
-// }
-
-
-
-// app.post('/',cr)
-
-
-// const Album = require('./model/album')
-
-// async function mail(req,res) {
-    
-//     try {
-        
-//         const album = req.body 
-//         Album.create(album)
-//         res.json(album)
-//     } catch (error) {
-        
-//     }
-// }
-
-// app.post('/',mail)
-// app.post('/',songCreate)
-
 
 
 const PORT = process.env.PORT || 3500

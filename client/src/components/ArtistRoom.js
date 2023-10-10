@@ -1,17 +1,12 @@
 import React, { useContext, useState } from 'react'
-import leo from '../images/leo.jpg'
-import {BsHeart,BsThreeDots,BsFillPauseFill,BsFillPlayFill} from 'react-icons/bs'
+import {BsFillPlayFill} from 'react-icons/bs'
 import { MdVerified } from "react-icons/md";
-import Category from './Category'
-import Lyrics from './Lyrics'
-import Recommended from './Recommended'
 import RecAlbam from './RecAlbam'
-import ThreeDotMenu from './ThreeDotMenu'
 import DataContext from '../context/DataContext'
 import { useParams } from 'react-router-dom';
 
 const ArtistRoom = () => {
-    const {homeWidth,allArtists,allSongs,capital,updateList} = useContext(DataContext)
+    const {allArtists,allSongs,capital,updateList} = useContext(DataContext)
 
 
     const id = useParams().id
@@ -19,7 +14,7 @@ const ArtistRoom = () => {
     const artist = allArtists.find(n=> n._id === id)
     // console.log(artist);
     const artistSongs = allSongs.filter(song=>song.artist.includes(artist._id)).map(n=>n._id)
-    console.log(artistSongs);
+    // console.log(artistSongs);
 
   return (
     <main className='w-full rounded-md mb-16 sm:mb-0'>

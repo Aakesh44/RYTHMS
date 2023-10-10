@@ -3,7 +3,6 @@ import song from '../images/song.jpg'
 import {BsThreeDots,BsPencilFill} from 'react-icons/bs'
 import {AiOutlineClose} from 'react-icons/ai'
 import Category from './Category'
-import RecAlbam from './RecAlbam'
 import DataContext from '../context/DataContext'
 import { useParams } from 'react-router-dom'
 
@@ -29,11 +28,9 @@ const ProfileRoom = () => {
   const [editImg,setEditImg] = useState(false)
 
   const publicPlaylistsCount = allPlaylists.filter(playlist => playlist.artist === id)?.length
-
-  const [follow,setFollow] = useState()
   
   const hanldeConnection = (mainId,userId) =>{
-    console.log(profile.followers.includes(mainUser._id));
+    // console.log(profile.followers.includes(mainUser._id));
       if(profile.followers.includes(mainUser._id)){
         handleUnfollow(mainId,userId)
       }

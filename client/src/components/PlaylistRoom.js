@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import song from '../images/song.jpg'
 import {AiOutlineClose} from 'react-icons/ai'
-import {BsHeart,BsFillHeartFill,BsThreeDots,BsSearch,BsFillPauseFill,BsPencilFill,BsFillPlayFill} from 'react-icons/bs'
+import {BsHeart,BsFillHeartFill,BsThreeDots,BsSearch,BsPencilFill,BsFillPlayFill} from 'react-icons/bs'
 import RecAlbam from './RecAlbam'
 import ThreeDotMenu from './ThreeDotMenu'
 import DataContext from '../context/DataContext'

@@ -11,8 +11,8 @@ const ProfileViews = () => {
     const option = useParams().option
 
     const profile = allProfiles.find(n=> n._id === id)
-    console.log('id :',id,'option :',option);
-    console.log(profile);
+    // console.log('id :',id,'option :',option);
+    // console.log(profile);
     
     let topItems 
 

@@ -4,7 +4,7 @@ import DataContext from '../context/DataContext'
 const SearchFilters = () => {
 
 
-  const {searchQuery,searchFilter,setSearchFilter} = useContext(DataContext)
+  const {searchQuery,setSearchFilter} = useContext(DataContext)
 
   const options = [
     {id:0,value:'All'},

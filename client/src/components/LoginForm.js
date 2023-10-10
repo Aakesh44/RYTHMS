@@ -17,7 +17,7 @@ const {handleUser,setMainUser} = useContext(DataContext)
 
  const handleSubmit = async (e) =>{
     e.preventDefault()
-    
+    setLoading(true)
     try {
         const config = {
             headers: {
@@ -33,7 +33,7 @@ const {handleUser,setMainUser} = useContext(DataContext)
             },
             config
         );
-        console.log(response);
+        // console.log(response);
         // setUserData(response.data)
         setError(false)
         
@@ -84,6 +84,9 @@ const {handleUser,setMainUser} = useContext(DataContext)
 
                     <div style={{visibility:!error && 'hidden'}} className=" bg-red-600 h-10 mb-10 flex items-center text-base font-semibold px-5">
                         <h1>Invalid email or password</h1>
+                    </div>
+                    <div style={{visibility:!loading && 'hidden'}} className=" bg-amber-500 h-10 mb-10 flex items-center text-base font-semibold px-5">
+                        <h1>Loading ...</h1>
                     </div>
 
                     <form onSubmit={handleSubmit} className="w-full bg-black px-5 text-base font-semibold">

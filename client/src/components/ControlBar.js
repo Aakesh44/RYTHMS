@@ -23,14 +23,14 @@ const ControlBar = () => {
   const playPrevious = () =>{
     setCurIndex((prev)=> prev === 0 ? curSongIds.length-1 : prev-1)
     // setCurSong(curSongIds[curIndex])
-    console.log(curIndex);
+    // console.log(curIndex);
     // console.log(curSong);
   }
 
   const playNext = () =>{
     setCurIndex((prev)=> prev === curSongIds.length-1 ? 0 : prev + 1)
     // setCurSong(curSongIds[curIndex])
-    console.log(curIndex);
+    // console.log(curIndex);
     // console.log(curSong);s
   }
 
@@ -48,7 +48,7 @@ const ControlBar = () => {
       
       setCurSongIds(shuffedArr) 
       setCurIndex(0)
-      console.log(curSongIds);
+      // console.log(curSongIds);
     }
 
     setIsShuffle(!isShuffle)
@@ -171,14 +171,10 @@ const ControlBar = () => {
     }else{
       setsound(true)
     }
-    console.log(soundProgress);
-    console.log((soundProgress / 100).toFixed(2))
+    // console.log(soundProgress);
+    // console.log((soundProgress / 100).toFixed(2))
   }
 
-  // const [curSongAudio,setCurAudio] = useState(allSongs[0]?.link)
-
-  // console.log('main url:',curSongI?.link);
-  // console.log('cur url :',curSongAudio);
 
   async function LoadAudio(link) {
     if(songRef.current && link){
@@ -193,7 +189,10 @@ const ControlBar = () => {
  useEffect(()=>{
   // setCurAudio(curSongI?.link)
 
-  if(curSongI?.link) LoadAudio(curSongI?.link)
+  if(curSongI?.link) {
+    LoadAudio(curSongI?.link)
+  }
+ 
 
  },[curSongI?.link])
 
@@ -217,13 +216,11 @@ const ControlBar = () => {
 
       <article className='Flex  h-full mr-auto gap-3'>
         <div style={{backgroundImage:`url(${curSongI?.img})`}} className='h-16 w-16 bg-cover bg-no-repeat overflow-hidden bg-white rounded-md'>
-            {/* <img src={curSongI?.img} alt="" className='h-full w-full rounded-md hover:scale-110 transition' /> */}
         </div>
 
         
         <div className=' w-32 overflow-hidden'>
           <h1 className=' Textwhite font-semibold hover:underline cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis'>
-            {/* {curSongIds.map(n=>(<p key={n}>{n}</p>))} */}
             {curSongI?.title}
             </h1>
           <h1 className=' Textgrey text-xs hover:underline cursor-pointer'>{artist?.name}</h1>

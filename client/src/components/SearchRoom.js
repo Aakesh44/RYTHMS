@@ -1,7 +1,6 @@
 import React,{useContext, useEffect, useState} from 'react'
 import SearchFilters from './SearchFilters'
 import Recommended from './Recommended'
-import song from '../images/song.jpg'
 import PlayButton from './PlayButton'
 import DataContext from '../context/DataContext'
 import { Link } from 'react-router-dom'

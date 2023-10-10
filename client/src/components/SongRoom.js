@@ -1,14 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react'
-import song from '../images/song.jpg'
-import {BsHeart,BsFillHeartFill,BsThreeDots,BsFillPauseFill,BsFillPlayFill} from 'react-icons/bs'
-import Category from './Category'
+import React, { useContext, useState } from 'react'
+import {BsHeart,BsFillHeartFill,BsThreeDots,BsFillPlayFill} from 'react-icons/bs'
 import Lyrics from './Lyrics'
-import Recommended from './Recommended'
 import RecAlbam from './RecAlbam'
 import ThreeDotMenu from './ThreeDotMenu'
 import DataContext from '../context/DataContext'
 import { Link, useParams } from 'react-router-dom'
-import axios from 'axios'
+
 const SongRoom = () => {
 
   const {homeWidth,allSongs,allArtists,capital,mainUser,handleLikeSong,handleDisLikeSong,updateSong} = useContext(DataContext)
@@ -21,9 +18,9 @@ const SongRoom = () => {
   // console.log(allSongs);
 
   const artists = allArtists.filter(n=> song?.artist.includes(n._id) ) 
-  console.log(artists);
+  // console.log(artists);
   const artistSongs = allSongs.filter(song=>song.artist.includes(artists[0]._id)).map(n=>n._id)
-  console.log(artistSongs);
+  // console.log(artistSongs);
   // const songIds = artists[0].songs
 
   const [like,setLike] = useState(mainUser?.likedSongs?.includes(id))
@@ -43,7 +40,7 @@ const [showLyrics,setShowLyrics] = useState(false)
 
   return (
 
-    <main className='w-full rounded-md MarginTop'>
+    <main className='w-full rounded-md MarginTop mb-16 md:mb-0'>
 
       <section  className='RoomsHeight bg-black p-4 flex items-end rounded-t-md'>
 

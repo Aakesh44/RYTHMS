@@ -26,7 +26,7 @@ import MobileController from './MobileController'
 
 const Home = ({navSize,nowSize}) => {
 
-  const {homeWidth,setHomeWidth,allSongs} = useContext(DataContext)
+  const {homeWidth,setHomeWidth} = useContext(DataContext)
 
 
   const home = useRef(null)

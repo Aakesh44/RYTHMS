@@ -27,7 +27,7 @@ const SignUpForm = () => {
   const handleDob = () =>{
     if(year && month && date){
       const dobStr = `${year}-${month}-${date}`
-      console.log('kk');
+      // console.log('kk');
       setDob(dobStr)
     }
   }
@@ -64,9 +64,9 @@ const SignUpForm = () => {
  
 
   const handleSubmitForm =async () =>{
-    console.log('errors :',errors);
-    console.log(typeof(dob));
-    console.log('dob :',dob,'year :',year,'month :',month,'date :',date,);
+    // console.log('errors :',errors);
+    // console.log(typeof(dob));
+    // console.log('dob :',dob,'year :',year,'month :',month,'date :',date,);
 
     try {
       
@@ -87,7 +87,7 @@ const SignUpForm = () => {
           },
           config
       );
-      console.log(response);
+      // console.log(response);
         // navigate('/')
         setExistError(null)
       localStorage.setItem('userinfo',JSON.stringify(response.data))

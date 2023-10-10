@@ -1,6 +1,6 @@
 import React from 'react'
 import Category from './Category'
-import MobileController from './MobileController'
+
 const CategoryRoom = () => {
   return (
     <div className='MarginTop  mb-16 sm:mb-0' >
@@ -16,8 +16,6 @@ const CategoryRoom = () => {
         <Category cat={'rahman'}/>
 
         <Category cat={'artist'}/>
-
-        {/* <MobileController /> */}
         
     </div>
   )

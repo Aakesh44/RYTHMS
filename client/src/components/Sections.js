@@ -7,7 +7,7 @@ import DataContext from '../context/DataContext'
 import { useLocation } from 'react-router-dom'
 const Sections = ({searchAlbums,searchPlaylists,searchProfiles,searchArtists}) => {
 
-  const {homeWidth,allAlbums,allArtists,allPlaylists,allProfiles,allSongs,mainUser} = useContext(DataContext)
+  const {homeWidth,allAlbums,allArtists,allPlaylists,allSongs} = useContext(DataContext)
 
   const location = useLocation()
   const path = location.pathname.split('/')

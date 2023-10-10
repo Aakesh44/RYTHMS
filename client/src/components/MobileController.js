@@ -2,29 +2,27 @@ import React,{useContext,useState,useRef,useEffect} from 'react'
 import { AiOutlineHeart} from "react-icons/ai";
 import { BiShuffle,BiSkipPrevious,BiSkipNext,BiRepeat} from "react-icons/bi";
 import { HiPlay,HiPause} from "react-icons/hi";
-import song1 from '../images/song1.mp3'
 import DataContext from '../context/DataContext';
 import { Link, useNavigate } from 'react-router-dom';
 const MobileController = () => {
 
-  const {userData,curSongIds,setCurSongIds,curIndex,setCurIndex,curSongI,allArtists,mainUser} = useContext(DataContext)
+  const {curSongIds,setCurSongIds,curIndex,setCurIndex,curSongI,mainUser} = useContext(DataContext)
 
 
   const [isShuffle, setIsShuffle] = useState(false)
-  const [isRepeat,setIsRepeat] = useState(false)
 
 
   const playPrevious = () =>{
     setCurIndex((prev)=> prev === 0 ? curSongIds.length-1 : prev-1)
     // setCurSong(curSongIds[curIndex])
-    console.log(curIndex);
+    // console.log(curIndex);
     // console.log(curSong);
   }
 
   const playNext = () =>{
     setCurIndex((prev)=> prev === curSongIds.length-1 ? 0 : prev + 1)
     // setCurSong(curSongIds[curIndex])
-    console.log(curIndex);
+    // console.log(curIndex);
     // console.log(curSong);s
   }
 
@@ -42,7 +40,7 @@ const MobileController = () => {
       
       setCurSongIds(shuffedArr) 
       setCurIndex(0)
-      console.log(curSongIds);
+      // console.log(curSongIds);
     }
 
     setIsShuffle(!isShuffle)
@@ -59,11 +57,10 @@ const MobileController = () => {
   const handleSong = () =>{
 
     const audio = minisongRef.current
-    console.log(audio.paused);
+    // console.log(audio.paused);
 
     if(audio.paused){
       audio.play()
-      console.log('ki');
     }
     else{
       audio.pause()

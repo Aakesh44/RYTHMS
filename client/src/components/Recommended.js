@@ -25,7 +25,7 @@ const Recommended = ({searchSongs}) => {
 
     function barHover(id){
         setLike(mainUser?.likedSongs?.includes(id))
-        console.log(like);
+        // console.log(like);
     }
 
     function handleHeart(id){

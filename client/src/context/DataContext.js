@@ -520,7 +520,7 @@ async function handleLikeSong(songId) {
     const [curSongIds,setCurSongIds] = useState([])
     const [curIndex,setCurIndex] = useState(0)
     
-    const [curSongI,setCurSongI] = useState(allSongs[0])
+    const [curSongI,setCurSongI] = useState(allSongs[0] ? allSongs[0] : allSongs[0])
 
     async function getSongIds() {
         try {

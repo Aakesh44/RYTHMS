@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
 const TitleBar = () => {
   return (
     <main className=' w-full h-16 flex items-center justify-between px-5 '>

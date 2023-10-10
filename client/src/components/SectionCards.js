@@ -7,7 +7,7 @@ import SignInMust from './SignInMust'
 
 const SectionCards = ({item,cat,}) => {
 
-  const {allArtists,allProfiles,capital,mainUser,handleSign,signinmust} = useContext(DataContext)
+  const {allArtists,mainUser,handleSign,signinmust} = useContext(DataContext)
   const [PlayButtonShow,setPlayButtonShow] = useState(false)
 
   // console.log(allArtists);console.log(item.artist);

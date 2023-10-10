@@ -6,9 +6,8 @@ import FeedCards from './FeedCards'
 
 const SearchCat = ({cat}) => {
 
-    const {homeWidth,searchQuery,searchFilter,allAlbums,allPlaylists,allProfiles,allArtists,} = useContext(DataContext)
+    const {homeWidth,searchQuery,allAlbums,allPlaylists,allProfiles,allArtists,} = useContext(DataContext)
     const query = searchQuery.split('%20').join('')
-    const filter = searchFilter.trim()
 
     const itemsToDisplay = [
       {width:350,count:2},

@@ -1,15 +1,12 @@
 import React, { useContext, useState } from 'react'
-import song from '../images/song.jpg'
-import {BsHeart,BsThreeDots,BsFillPauseFill,BsFillPlayFill} from 'react-icons/bs'
+import {BsFillPlayFill} from 'react-icons/bs'
 import {GoHeartFill} from 'react-icons/go'
 import RecAlbam from './RecAlbam'
-import ThreeDotMenu from './ThreeDotMenu'
 import DataContext from '../context/DataContext'
-import { Link, useParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const CollectionRoom = () => {
 
-const {homeWidth,allPlaylists,allProfiles,allSongs,mainUser,updateList} = useContext(DataContext)
-const [DotMenu,setDotMenu] = useState(false)
+const {homeWidth,mainUser,updateList} = useContext(DataContext)
 
 
 const songs = mainUser?.likedSongs

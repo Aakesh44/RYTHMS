@@ -21,8 +21,9 @@ const SongRoom = () => {
   // console.log(allSongs);
 
   const artists = allArtists.filter(n=> song?.artist.includes(n._id) ) 
-  // console.log(artists);
-
+  console.log(artists);
+  const artistSongs = allSongs.filter(song=>song.artist.includes(artists[0]._id)).map(n=>n._id)
+  console.log(artistSongs);
   // const songIds = artists[0].songs
 
   const [like,setLike] = useState(mainUser?.likedSongs?.includes(id))
@@ -118,10 +119,10 @@ const [showLyrics,setShowLyrics] = useState(false)
         </aside>
       </section>
             
-      {artists.map((artist,ind)=>(
+      {/* {artists.map((artist,ind)=>( */}
 
-        <RecAlbam songIds={artist.songs} title={artist.name} key={ind}/>
-      ))}
+        <RecAlbam songIds={artistSongs} title={artists[0]?.name}/>
+      {/* ))} */}
 
       {/* <Category /> */}
     </main>

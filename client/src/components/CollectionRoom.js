@@ -16,7 +16,7 @@ const songs = mainUser?.likedSongs
 // console.log(songs);
 
 return (
-    <main className='w-full rounded-md'>
+    <main className='w-full rounded-md mb-16 sm:mb-0'>
 
       <section  className='Asidelikeboxicon RoomsHeight p-4 flex items-end rounded-t-md'>
 

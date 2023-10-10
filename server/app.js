@@ -12,7 +12,7 @@ app.use(express.json())
 async function main() {
     
     try {
-        await mongoose.connect('mongodb://127.0.0.1:27017/music')
+        await mongoose.connect('mongodb+srv://aakeshviswanathan:J9qvVRtfSCZBEKV8@cluster0.x7watxt.mongodb.net/?retryWrites=true&w=majority',{useNewUrlParser: true,useUnifiedTopology: true})
         console.log('connected to db');
 
     } catch (err) {
@@ -39,6 +39,11 @@ app.use('/',approute)
 //             res.status(500).json(`Error: ${err.message}`)
 //     }
 // }
+
+
+
+// app.post('/',cr)
+
 
 // const Album = require('./model/album')
 

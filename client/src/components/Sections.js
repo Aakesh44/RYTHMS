@@ -49,7 +49,7 @@ const Sections = ({searchAlbums,searchPlaylists,searchProfiles,searchArtists}) =
 
 
   return (
-    <main style={{minHeight:'350px'}} className='w-full MarginTop '>
+    <main style={{minHeight:'350px'}} className='w-full MarginTop mb-16 sm:mb-0'>
         {/* <TitleBar/> */}
 
         <section 

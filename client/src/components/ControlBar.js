@@ -13,7 +13,7 @@ import DataContext from '../context/DataContext';
 
 const ControlBar = () => {
 
-  const {userData,curSongIds,setCurSongIds,curIndex,setCurIndex,curSongI,allArtists} = useContext(DataContext)
+  const {userData,curSongIds,setCurSongIds,curIndex,setCurIndex,curSongI,allArtists,allSongs} = useContext(DataContext)
 
 
   const [isShuffle, setIsShuffle] = useState(false)
@@ -56,7 +56,7 @@ const ControlBar = () => {
   }
 
   const toggleRepeat = () =>{
-
+    setIsRepeat(!isRepeat)
   }
 
 
@@ -143,9 +143,11 @@ const ControlBar = () => {
 
       if(isRepeat){
         setCurIndex(prev=>prev)
+        songRef.current.play()
       }
       else{
         playNext()
+        setPlay(true)
       }
     }
   }
@@ -173,10 +175,38 @@ const ControlBar = () => {
     console.log((soundProgress / 100).toFixed(2))
   }
 
+  // const [curSongAudio,setCurAudio] = useState(allSongs[0]?.link)
 
- 
+  // console.log('main url:',curSongI?.link);
+  // console.log('cur url :',curSongAudio);
+
+  async function LoadAudio(link) {
+    if(songRef.current && link){
+
+      songRef.current.src = link 
+      await songRef.current.load()
+      // if(songRef.current.paused) songRef.current.play()
+
+    }
+  }
+
+ useEffect(()=>{
+  // setCurAudio(curSongI?.link)
+
+  if(curSongI?.link) LoadAudio(curSongI?.link)
+
+ },[curSongI?.link])
+
+ const handlePlay =()=>{
+  if(songRef.current.paused && play){
+    songRef.current.play().catch((e)=>{
+      console.log(e);
+    })
+  }
+ }
+
   return (
-    <main style={{gridTemplateColumns:userData ? '1fr 1.5fr 1fr' : '1fr'}} className='ControllBar hidden lg:flex'>
+    <main style={{gridTemplateColumns:userData ? '1fr 1.5fr 1fr' : '1fr'}} className='ControllBar select-none hidden md:flex'>
 
 
     {userData ?
@@ -186,8 +216,8 @@ const ControlBar = () => {
       <section className='section1 Black  flex mx-3 '>
 
       <article className='Flex  h-full mr-auto gap-3'>
-        <div className='h-16 w-16 overflow-hidden bg-white rounded-md'>
-            <img src={curSongI?.img} alt="" className='h-full w-full rounded-md hover:scale-110 transition' />
+        <div style={{backgroundImage:`url(${curSongI?.img})`}} className='h-16 w-16 bg-cover bg-no-repeat overflow-hidden bg-white rounded-md'>
+            {/* <img src={curSongI?.img} alt="" className='h-full w-full rounded-md hover:scale-110 transition' /> */}
         </div>
 
         
@@ -252,22 +282,21 @@ const ControlBar = () => {
 
         <span 
           className=' relative'
-          onClick={handleSong}
+          onClick={curSongI && handleSong}
           // onTimeUpdate={}
           onMouseEnter={()=>handleiconhover( songRef.current?.paused ? 'Play' : 'Pause')}
           onMouseLeave={handleiconleave}>
           {songRef.current?.paused ? 
-            <HiPlay className='h-12 w-12 Textwhite' />
-          :<HiPause className='h-12 w-12 Textwhite' />}
+            <HiPlay onClick={()=>setPlay(!play)} className='h-12 w-12 Textwhite' />
+          :<HiPause onClick={()=>setPlay(!play)} className='h-12 w-12 Textwhite' />}
           
           {(hoverIcon === 'Pause' || hoverIcon === 'Play')  &&
             <h1 className=' h-fit min-w-fit Textwhite text-sm absolute -top-12 Bgblack p-1 px-2 transition rounded-md font-semibold left-1/2 transform -translate-x-1/2 whitespace-nowrap'>{hoverIcon}</h1>
           } 
 
-          <audio ref={songRef} onTimeUpdate={()=>{handleTime();handleDuration()}} id='curSong'>
-            <source src={song1} type='audio/mpeg'></source>
+          <audio ref={songRef} onCanPlayThrough={handlePlay} onError={(e)=>console.log('error :',e)} onTimeUpdate={()=>{handleTime();handleDuration()}} id='curSong'>
           </audio>
-
+            {/* {curSongAudio && <source src={curSongAudio} type='audio/mpeg'></source> } */}
 
         </span>
 
@@ -283,9 +312,10 @@ const ControlBar = () => {
         </span>
         <span 
           className=' relative'
+          onClick={toggleRepeat}
           onMouseEnter={()=>handleiconhover('Enable repeat')}
           onMouseLeave={handleiconleave}>
-          <BiRepeat  className='icons'/>
+          <BiRepeat  className={` ${isRepeat ? 'text-green-400' : 'text-gray-200'}`}/>
           {hoverIcon === 'Enable repeat' &&
             <h1 className=' h-fit min-w-fit Textwhite text-sm absolute -top-12 Bgblack p-1 px-2 transition rounded-md font-semibold left-1/2 transform -translate-x-1/2 whitespace-nowrap'>{hoverIcon}</h1>
           } 
@@ -307,46 +337,46 @@ const ControlBar = () => {
       </section>
       <section className='controllsection3 Black  Flex mx-3'>
 
-      <aside className='controllsection3aside Flex'>
+      <aside className='controllsection3aside flex items-center justify-center lg:justify-between'>
 
         <span 
-          className=' relative'
+          className=' relative hidden lg:block'
           onMouseEnter={()=>handleiconhover('Now playing view')}
           onMouseLeave={handleiconleave}>
-          <AiOutlinePlaySquare  className='icons'/>
+          <AiOutlinePlaySquare  className='icons h-3 w-3 lg:h-5 lg:w-5'/>
           {hoverIcon === 'Now playing view' &&
             <h1 className=' h-fit min-w-fit Textwhite text-sm absolute -top-12 Bgblack p-1 px-2 transition rounded-md font-semibold left-1/2 transform -translate-x-1/2 whitespace-nowrap'>{hoverIcon}</h1>
           } 
         </span>
         <span 
-          className=' relative'
+          className=' relative hidden lg:block'
           onMouseEnter={()=>handleiconhover('Lyrics')}
           onMouseLeave={handleiconleave}>
-          <TbMicrophone2  className='icons'/>
+          <TbMicrophone2  className='icons h-3 w-3 lg:h-5 lg:w-5'/>
           {hoverIcon === 'Lyrics' &&
             <h1 className=' h-fit min-w-fit Textwhite text-sm absolute -top-12 Bgblack p-1 px-2 transition rounded-md font-semibold left-1/2 transform -translate-x-1/2 whitespace-nowrap'>{hoverIcon}</h1>
           } 
         </span>
         <span 
-          className=' relative'
+          className=' relative hidden lg:block'
           onMouseEnter={()=>handleiconhover('Queue')}
           onMouseLeave={handleiconleave}>
-          <HiOutlineQueueList  className='icons'/>
+          <HiOutlineQueueList  className='icons h-3 w-3 lg:h-5 lg:w-5'/>
           {hoverIcon === 'Queue' &&
             <h1 className=' h-fit min-w-fit Textwhite text-sm absolute -top-12 Bgblack p-1 px-2 transition rounded-md font-semibold left-1/2 transform -translate-x-1/2 whitespace-nowrap'>{hoverIcon}</h1>
           } 
         </span>
         <span 
-          className=' relative'
+          className=' relative hidden lg:block'
           onMouseEnter={()=>handleiconhover('Connect to a device')}
           onMouseLeave={handleiconleave}>
-          <BiDevices  className='icons'/>
+          <BiDevices  className='icons h-3 w-3 lg:h-5 lg:w-5'/>
           {hoverIcon === 'Connect to a device' &&
             <h1 className=' h-fit min-w-fit Textwhite text-sm absolute -top-12 Bgblack p-1 px-2 transition rounded-md font-semibold left-1/2 transform -translate-x-1/2 whitespace-nowrap'>{hoverIcon}</h1>
           } 
         </span>
         <span 
-          className=' relative'
+          className=' relative mr-1'
           onMouseEnter={()=>handleiconhover('Mute')}
           onMouseLeave={handleiconleave}>
           {sound ?

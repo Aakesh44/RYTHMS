@@ -81,7 +81,7 @@ const formattedDate = dateObject.toLocaleDateString('en-US', options);
 
 // console.log(formattedDate);
 return (
-    <main className='w-full rounded-md'>
+    <main className='w-full rounded-md mb-16 sm:mb-0'>
 
       <section className='RoomsHeight bg-black p-4 flex items-end rounded-t-md overflow-hidden'>
 
@@ -99,7 +99,7 @@ return (
         <aside className=''>
           <h1 className=' text-sm '>Playlist</h1>
           <h1 onClick={()=>{myPlaylist && setEditPage(!editPage)}} style={{fontSize:homeWidth > 1300 ? '70px' :homeWidth > 1100 ? '50px':homeWidth > 500 ?'30px':'24px',cursor:myPlaylist && 'pointer'}} className='font-bold '>{capital(playlist?.title)}</h1>
-          <h1 className=' text-sm font-semibold flex gap-2 overflow-hidden max-h-10'>
+          <h1 className=' text-xs sm:text-sm font-semibold flex gap-2 overflow-hidden max-h-10'>
             <Link to={`/profile/${artist?._id}`} className=' cursor-pointer hover:underline whitespace-nowrap'>{capital(artist?.name)}</Link> 
             {playlist?.songs.length > 0 &&
             <p className='flex gap-1 sm:gap-2 overflow-hidden whitespace-nowrap overflow-ellipsis'>

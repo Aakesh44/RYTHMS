@@ -3,7 +3,7 @@ import Category from './Category'
 import MobileController from './MobileController'
 const CategoryRoom = () => {
   return (
-    <div className='MarginTop b' >
+    <div className='MarginTop  mb-16 sm:mb-0' >
 
         <Category cat={'topsongs'} /> 
 
@@ -17,7 +17,7 @@ const CategoryRoom = () => {
 
         <Category cat={'artist'}/>
 
-        <MobileController />
+        {/* <MobileController /> */}
         
     </div>
   )

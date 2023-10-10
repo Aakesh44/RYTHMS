@@ -1,13 +1,13 @@
-import React,{useContext,useState,useRef} from 'react'
+import React,{useContext,useState,useRef,useEffect} from 'react'
 import { AiOutlineHeart} from "react-icons/ai";
 import { BiShuffle,BiSkipPrevious,BiSkipNext,BiRepeat} from "react-icons/bi";
 import { HiPlay,HiPause} from "react-icons/hi";
 import song1 from '../images/song1.mp3'
 import DataContext from '../context/DataContext';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 const MobileController = () => {
 
-  const {userData,curSongIds,setCurSongIds,curIndex,setCurIndex,curSongI,allArtists} = useContext(DataContext)
+  const {userData,curSongIds,setCurSongIds,curIndex,setCurIndex,curSongI,allArtists,mainUser} = useContext(DataContext)
 
 
   const [isShuffle, setIsShuffle] = useState(false)
@@ -59,18 +59,17 @@ const MobileController = () => {
   const handleSong = () =>{
 
     const audio = minisongRef.current
-    try {
-      if(audio.paused){
-        audio.play()
-      }
-      else{
-        audio.pause()
-      }
-  
-      audio.volume = 1
-    } catch (error) {
-      console.log(error);
+    console.log(audio.paused);
+
+    if(audio.paused){
+      audio.play()
+      console.log('ki');
     }
+    else{
+      audio.pause()
+    }
+
+    audio.volume = 1
 
   }
 
@@ -79,42 +78,70 @@ const MobileController = () => {
   const handleRoute = () =>{
     navigate(`track/${curSongI?._id}`)
   }
+
+async function LoadAudio(link) {
+    if(minisongRef.current && link){
+
+      minisongRef.current.src = link 
+      await minisongRef.current.load()
+    }
+  }
+
+ useEffect(()=>{
+
+  if(curSongI?.link) LoadAudio(curSongI?.link)
+
+ },[curSongI?.link])
+
+ const handlePlay =()=>{
+  if(minisongRef.current.paused && (!minisongRef.current?.paused) ){
+    minisongRef.current.play().catch((e)=>{
+      console.log(e);
+    })
+  }
+ }
+
   return (
 
-    <main className='sm:hidden w-full flex items-center h-16 bg-amber-500 overflow-hidden fixed left-0 right-0 bottom-0'>
+    <main className='sm:hidden w-full  h-16  bg-black -500 overflow-hidden fixed left-0 right-0 bottom-0'>
 
-        <div onClick={handleRoute} className='w-2/12 aspect-square p-1 bg-blue-500'>
-            <img src={curSongI?.img} alt="" className='h-full aspect-square'/>
-            {/* <p className=' text-black text-sm'>{curSongI?.title}</p> */}
-        </div>
+        {(Object.keys(mainUser).length > 0) ?
+        <div className='w-full h-full flex items-center'>
+        
+          <div onClick={handleRoute} className='w-2/12 aspect-square p-1'>
+              <img src={curSongI?.img} alt="" className='h-full aspect-square'/>
+          </div>
 
-        <section className=' w-8/12 bg-fuchsia-600 h-full flex items-center justify-around'>
-            <BiShuffle      onClick={toggleShuffle} className='h-6 w-6'/>
-            <BiSkipPrevious onClick={playPrevious}  className='h-9 w-9'/>
+          <section className=' w-8/12 bg-black -600 h-full flex items-center justify-around'>
+              <BiShuffle      onClick={toggleShuffle} className='h-6 w-6'/>
+              <BiSkipPrevious onClick={playPrevious}  className='h-9 w-9'/>
 
-            <div >
-              {minisongRef.current?.paused ?
+              <div >
 
-                <span onClick={handleSong}><HiPlay className='h-10 w-10 Textwhite' /></span>
-                :
-                <span onClick={handleSong}><HiPause className='h-10 w-10 Textwhite' /></span>
-                
-              }  
+                <span onClick={handleSong}> {(minisongRef.current?.paused) ? <HiPlay className='h-10 w-10 Textwhite' />:<HiPause className='h-10 w-10 Textwhite' />}</span>
+                                  
+                <audio ref={minisongRef} onCanPlayThrough={handlePlay}>
+                  {/* <source src={curSongI?.link} type='audio/mpeg'></source> */}
+                </audio>          
+              </div>
+              
 
-              <audio ref={minisongRef} >
-                <source src={song1} type='audio/mpeg'></source>
-              </audio>          
-            </div>
-            
-
-            <BiSkipNext     onClick={playNext}      className='h-9 w-9'/>
-            <BiRepeat       onClick={toggleRepeat}  className='h-6 w-6'/>
-        </section>
+              <BiSkipNext     onClick={playNext}      className='h-9 w-9'/>
+              <BiRepeat       onClick={toggleRepeat}  className='h-6 w-6'/>
+          </section>
 
 
 
-        <div className='w-2/12 aspect-square Flex '> <AiOutlineHeart className=' h-7 w-7'/> </div>
-
+          <div className='w-2/12 aspect-square Flex '> <AiOutlineHeart className=' h-7 w-7'/> </div>
+        </div>:
+        <div className='w-full h-full flex items-center justify-evenly'>
+          <Link to='log-in' className=' bg-white text-black text-sm font-semibold px-6 py-2 rounded-md active:scale-95'>
+            Log in
+          </Link>
+          <Link to='sign-up' className=' bg-white text-black text-sm font-semibold px-6 py-2 rounded-md active:scale-95'>
+            Sign up
+          </Link>
+        </div>}
     </main>
 
   )

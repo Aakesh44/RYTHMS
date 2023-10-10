@@ -7,6 +7,7 @@ const MenuMobile =({setMenuOpen,menuOpen})=>{
 
     const {userData,mainUser} = useContext(DataContext)
 const navigate = useNavigate()
+
 const hanldeLogout = (e) =>{
     e.stopPropagation();
     localStorage.removeItem('userinfo')
@@ -30,7 +31,7 @@ return(
         {userData && 
             <section className=" p-2 m-10 text-2xl font-semibold Textwhite">
                 <Link to={`/profile/${mainUser._id}`} onClick={()=>setMenuOpen(false)} className="my-5">Profile</Link>
-                <h1 className="my-5" onClick={(e)=>hanldeLogout(e)}>Log out</h1>
+                <h1 className="my-5 cursor-pointer" onClick={(e)=>hanldeLogout(e)}>Log out</h1>
             </section>
         }
 

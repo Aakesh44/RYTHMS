@@ -15,8 +15,6 @@
 
 .icons{
   color: rgb(205, 209, 212);
-  height: 20px;
-  width: 20px;
   cursor: pointer;
 }
 .icons:hover{
@@ -73,10 +71,8 @@
   height: 100%;
   width: 60%;
   margin-left: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   background-color: #000000;
+
 }
 
 
@@ -132,7 +128,7 @@
   }
 }
 
-@media screen and (max-width:770px) {
+@media screen and (max-width:640px) {
   .ControllBar{
     display: none;
   }

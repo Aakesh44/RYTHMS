@@ -137,7 +137,7 @@ const Home = ({navSize,nowSize}) => {
 
       </Routes>
 
-      
+      <MobileController/>
       <Footer />
     </main>
   )

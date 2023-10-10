@@ -36,8 +36,8 @@ const SectionCards = ({item,cat,}) => {
             onMouseEnter={()=>setPlayButtonShow(true)}
             onMouseLeave={()=>setPlayButtonShow(false)}>
 
-                <div style={{height:'140px'}} className=' w-full relative Flex'>
-                  <img src={item.img} alt="" style={{}} className='h-full aspect-square rounded-md'/>
+                <div style={{backgroundImage:`url(${item.img})`,height:'140px'}} className=' w-full bg-cover bg-no-repeat bg-center relative Flex'>
+                  {/* <img src={item.img} alt="" style={{}} className='h-full aspect-square rounded-md'/> */}
 
                   {
                     PlayButtonShow && <PlayButton show={PlayButtonShow}/>

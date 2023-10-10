@@ -46,7 +46,7 @@ const SearchRoom = () => {
 
     
   return (
-    <>
+    <div className='mb-16 sm:mb-0'>
     <SearchFilters/>
 
     {
@@ -110,13 +110,7 @@ const SearchRoom = () => {
                 </aside>
             </section>
 
-            
-
-
-        </main>:
-
-    <>
-    </>
+        </main>:<></>
 
     }
     <>
@@ -126,7 +120,7 @@ const SearchRoom = () => {
         {(searchProfiles.length >0 && filter.length === 0) && <SearchCat cat={'profiles'}/>}
     </>
 
-    </>
+    </div>
     
 
   )

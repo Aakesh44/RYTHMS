@@ -12,7 +12,9 @@ const RecAlbam = ({songIds,cat,title,myPlaylist,playlistid}) => {
 
     const {homeWidth,allSongs,allArtists,allPlaylists,mainUser,handleLikeSong,handleDisLikeSong,handlePullToPlaylist,handlePushToPlaylist,handleCreatePlaylist} = useContext(DataContext)
     // console.log(songIds);
-    const songList = allSongs.filter(n=> songIds.includes(n._id))
+
+    const songList = songIds.map(Id => allSongs.find(n=>n._id === Id))
+
     // console.log(songList);
 
     const [hover,setHover] = useState(null)
@@ -77,14 +79,14 @@ const RecAlbam = ({songIds,cat,title,myPlaylist,playlistid}) => {
             }} 
                 className='w-full h-16 grid items-center Textgrey hover:text-white'>
 
-                <Link to={`/track/${song._id}`}  className='w-full h-14 overflow-hidden p-2 flex items-center justify-start gap-4 '>
+                <div   className='w-full h-14 overflow-hidden p-2 flex items-center justify-start gap-4 '>
                     <h1 className=' w-5'>{ind+1}</h1>
-                    <div className='h-10 w-10 aspect-square relative'>
-                        <img src={song.img} alt="" className='h-10 aspect-square w-10 '/>
+                    <Link style={{backgroundImage:`url(${song?.img})`}} className='h-10 w-10 aspect-square bg-cover bg-center bg-no-repeat relative'>
+                        {/* <img src={song.img} alt="" className='h-10 aspect-square w-10 '/> */}
                         {hover === ind && <span style={{backgroundColor:'#3f3e3e2f'}} className=' absolute w-10 h-10 inset-0 Flex cursor-pointer'><BsFillPlayFill className='h-6 w-6 Textwhite'/></span>}
-                    </div>
+                    </Link>
                     <div className='w-full overflow-hidden'>
-                        <h1 className='w-fit font-semibold Textwhite cursor-pointer hover:underline overflow-hidden whitespace-nowrap'>{song.title}</h1>
+                        <Link to={`/track/${song._id}`} className='w-fit font-semibold Textwhite cursor-pointer hover:underline overflow-hidden whitespace-nowrap'>{song.title}</Link>
 
                         <h1 
                             style={{textOverflow:'ellipsis',maxWidth:homeWidth > 1000 ? '500px':homeWidth > 700 ? '300px':'200px',overflow:'hidden',whiteSpace:'nowrap',fontWeight:'500',fontSize:'14px',lineHeight:'20px'}} 
@@ -95,7 +97,7 @@ const RecAlbam = ({songIds,cat,title,myPlaylist,playlistid}) => {
                         </h1>
 
                     </div>
-                </Link>
+                </div>
 
                 <aside style={{display: cat==='album' ? 'none':homeWidth < 800 ? 'none' : 'block'}} className=' text-sm font-semibold'>
                     <h1>{song.release}</h1>

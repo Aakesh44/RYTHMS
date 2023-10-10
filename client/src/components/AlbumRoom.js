@@ -38,7 +38,7 @@ const AlbumRoom = () => {
   }
 
   return (
-    <main className='w-full rounded-md'>
+    <main className='w-full rounded-md mb-16 sm:mb-0'>
 
       <section  className='RoomsHeight bg-black p-4 flex items-end rounded-t-md'>
 

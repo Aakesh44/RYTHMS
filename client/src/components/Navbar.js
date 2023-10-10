@@ -23,7 +23,7 @@ const Navbar = ({homeWidth,navSize,nowSize,navBg}) => {
   const navigate = useNavigate()
 
   const handleQueryChange = (newQuery) =>{
-    const query = newQuery.split("%20").join("")
+    const query = newQuery
     setSearchQuery(query)
     navigate(`/search/${query}/${searchFilter}`)
   }
@@ -72,7 +72,7 @@ const Navbar = ({homeWidth,navSize,nowSize,navBg}) => {
               <input 
               type="text" 
               value={searchQuery}
-              onChange={(e)=>handleQueryChange(e.target.value)}
+              onChange={(e)=>handleQueryChange(e.target.value?.trim())}
               onFocus={()=>setSearchActive(true)}
               onBlur={()=>setSearchActive(false)}
               style={{width: homeWidth > 700 ? '350px':'180px',textOverflow: 'ellipsis'}}  
@@ -135,7 +135,7 @@ const Navbar = ({homeWidth,navSize,nowSize,navBg}) => {
               <input 
               type="text" 
               value={searchQuery}
-              onChange={(e)=>handleQueryChange(e.target.value)}
+              onChange={(e)=>handleQueryChange(e.target.value.trim())}
               onFocus={()=>setSearchActive(true)}
               onBlur={()=>setSearchActive(false)}
               style={{width: homeWidth > 700 ? '350px':'180px',textOverflow: 'ellipsis'}}  

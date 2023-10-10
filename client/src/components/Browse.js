@@ -48,7 +48,7 @@ const Browse = () => {
   ]
 
   return (
-    <main className='MarginTop w-full h-full bg-balck'>
+    <main className='MarginTop mb-16 sm:mb-0 w-full h-full bg-balck'>
       <header className='h-fit w-full grid text-2xl font-bold px-4'>Browse all</header>
 
       <section

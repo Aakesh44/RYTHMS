@@ -23,12 +23,10 @@ const albumSchema = mongoose.Schema({
             type:mongoose.Schema.Types.ObjectId,
             ref:'Songs'
         }
-    ],
-    createAt:{
-        type:Date,
-        default: Date.now(),
-        immutable:true
-    }
+    ]
+},
+{
+    timestamps: true
 })
 
 module.exports = mongoose.model('Album',albumSchema,'album')

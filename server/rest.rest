@@ -1,0 +1,11 @@
+
+POST http://localhost:3500
+Content-Type: application/json
+
+{
+    "name": "anirudh",
+    "verified": true,
+    "followersCount": 10,
+    "listener": 13,
+    "img":"https://i.pinimg.com/564x/9e/c2/20/9ec220c7e30555d5fec77b8afbc3db85.jpg",
+}

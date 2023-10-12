@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import '../css/ControllBar.css'
-import leo from '../images/leo.jpg'
-import song1 from '../images/song1.mp3'
+import logo from '../images/logo.png'
+
 import { AiOutlineHeart,AiOutlineCamera,AiOutlinePlaySquare, AiFillSound } from "react-icons/ai";
 import { BiShuffle,BiSkipPrevious,BiSkipNext,BiRepeat,BiDevices,BiSolidVolumeMute} from "react-icons/bi";
 import { TbMicrophone2 } from "react-icons/tb";
@@ -251,8 +251,10 @@ const ControlBar = () => {
         </aside>
         </article>:
 
-        <article className='h-full mr-auto'>
-          <h1 className='text-2xl'>Enjoy your music now in RYTHMS</h1>
+        <article className='Flex h-full mr-auto Textwhite'>
+          <div style={{backgroundImage:`url(${logo})`}} className='h-16 w-16 bg-cover bg-no-repeat overflow-hidden bg-white rounded-md'></div>
+
+          <h1 className='text-2xl w-32'>Enjoy your music now in RYTHMS</h1>
         </article>
       }
 

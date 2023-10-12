@@ -252,9 +252,9 @@ const ControlBar = () => {
         </article>:
 
         <article className='Flex h-full mr-auto Textwhite'>
-          <div style={{backgroundImage:`url(${logo})`}} className='h-16 w-16 bg-cover bg-no-repeat overflow-hidden bg-white rounded-md'></div>
+          <div style={{backgroundImage:`url(${logo})`}} className='h-16 w-16 bg-cover bg-no-repeat overflow-hidden bg-transparent rounded-md'></div>
 
-          <h1 className='text-sm mx-5 truncate'>Enjoy your music now in RYTHMS</h1>
+          <h1 className='text-sm mx-5 font-semibold truncate'>Enjoy your music now in RYTHMS</h1>
         </article>
       }
 

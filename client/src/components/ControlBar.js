@@ -213,43 +213,49 @@ const ControlBar = () => {
     <>
 
       <section className='section1 Black  flex mx-3 '>
+      
+      {(curSongI?.link) ? 
+        <article className='Flex  h-full mr-auto gap-3'>
 
-      <article className='Flex  h-full mr-auto gap-3'>
-        <div style={{backgroundImage:`url(${curSongI?.img})`}} className='h-16 w-16 bg-cover bg-no-repeat overflow-hidden bg-white rounded-md'>
-        </div>
-
-        
-        <div className=' w-32 overflow-hidden'>
-          <h1 className=' Textwhite font-semibold hover:underline cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis'>
-            {curSongI?.title}
-            </h1>
-          <h1 className=' Textgrey text-xs hover:underline cursor-pointer'>{artist?.name}</h1>
-        </div>
+          <div style={{backgroundImage:`url(${curSongI?.img})`}} className='h-16 w-16 bg-cover bg-no-repeat overflow-hidden bg-white rounded-md'></div>
+          
+          <div className=' w-32 overflow-hidden'>
+            <h1 className=' Textwhite font-semibold hover:underline cursor-pointer overflow-hidden whitespace-nowrap text-ellipsis'>
+              {curSongI?.title}
+              </h1>
+            <h1 className=' Textgrey text-xs hover:underline cursor-pointer'>{artist?.name}</h1>
+          </div>
 
 
-      <aside className='heart  w-fit Flex gap-3'>
-        <span 
-          className=' relative'
-          onMouseEnter={()=>handleiconhover('Save to your library')}
-          onMouseLeave={handleiconleave}>
-          <AiOutlineHeart  className='icons'/>
-          {hoverIcon ==='Save to your library' &&
-            <h1 className=' h-fit min-w-fit Textwhite text-sm absolute -top-12 Bgblack p-1 px-2 transition rounded-md font-semibold left-1/2 transform -translate-x-1/2 whitespace-nowrap'>{hoverIcon}</h1>
-          } 
-        </span>
+        <aside className='heart  w-fit Flex gap-3'>
+          <span 
+            className=' relative'
+            onMouseEnter={()=>handleiconhover('Save to your library')}
+            onMouseLeave={handleiconleave}>
+            <AiOutlineHeart  className='icons'/>
+            {hoverIcon ==='Save to your library' &&
+              <h1 className=' h-fit min-w-fit Textwhite text-sm absolute -top-12 Bgblack p-1 px-2 transition rounded-md font-semibold left-1/2 transform -translate-x-1/2 whitespace-nowrap'>{hoverIcon}</h1>
+            } 
+          </span>
 
-        <span 
-          className=' relative'
-          onMouseEnter={()=>handleiconhover('Picture in picture')}
-          onMouseLeave={handleiconleave}>
-          <AiOutlineCamera  className='icons'/>
-          {hoverIcon === 'Picture in picture' &&
-            <h1 className=' h-fit min-w-fit Textwhite text-sm absolute -top-12 Bgblack p-1 px-2 transition rounded-md font-semibold left-1/2 transform -translate-x-1/2 whitespace-nowrap'>{hoverIcon}</h1>
-          } 
-        </span>
+          <span 
+            className=' relative'
+            onMouseEnter={()=>handleiconhover('Picture in picture')}
+            onMouseLeave={handleiconleave}>
+            <AiOutlineCamera  className='icons'/>
+            {hoverIcon === 'Picture in picture' &&
+              <h1 className=' h-fit min-w-fit Textwhite text-sm absolute -top-12 Bgblack p-1 px-2 transition rounded-md font-semibold left-1/2 transform -translate-x-1/2 whitespace-nowrap'>{hoverIcon}</h1>
+            } 
+          </span>
 
-      </aside>
-      </article>
+        </aside>
+        </article>:
+
+        <article className='h-full mr-auto'>
+          <h1 className='text-2xl'>Enjoy your music now in RYTHMS</h1>
+        </article>
+      }
+
       </section>
 
       <section className='controllsection2 Black '>

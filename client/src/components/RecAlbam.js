@@ -81,8 +81,7 @@ const RecAlbam = ({songIds,cat,title,myPlaylist,playlistid}) => {
 
                 <div   className='w-full h-14 overflow-hidden p-2 flex items-center justify-start gap-4 '>
                     <h1 className=' w-5'>{ind+1}</h1>
-                    <Link style={{backgroundImage:`url(${song?.img})`}} className='h-10 w-10 aspect-square bg-cover bg-center bg-no-repeat relative'>
-                        {/* <img src={song.img} alt="" className='h-10 aspect-square w-10 '/> */}
+                    <Link to={`/track/${song._id}`} style={{backgroundImage:`url(${song?.img})`}} className='h-10 w-10 aspect-square bg-cover bg-center bg-no-repeat relative'>
                         {hover === ind && <span style={{backgroundColor:'#3f3e3e2f'}} className=' absolute w-10 h-10 inset-0 Flex cursor-pointer'><BsFillPlayFill className='h-6 w-6 Textwhite'/></span>}
                     </Link>
                     <div className='w-full overflow-hidden'>

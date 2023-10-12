@@ -4,6 +4,8 @@ import { BiShuffle,BiSkipPrevious,BiSkipNext,BiRepeat} from "react-icons/bi";
 import { HiPlay,HiPause} from "react-icons/hi";
 import DataContext from '../context/DataContext';
 import { Link, useNavigate } from 'react-router-dom';
+
+import logo from '../images/logo.png'
 const MobileController = () => {
 
   const {curSongIds,setCurSongIds,curIndex,setCurIndex,curSongI,mainUser} = useContext(DataContext)
@@ -106,7 +108,7 @@ async function LoadAudio(link) {
         <div className='w-full h-full flex items-center'>
         
           <div onClick={handleRoute} className='w-2/12 aspect-square p-1'>
-              <img src={curSongI?.img} alt="" className='h-full aspect-square'/>
+              <img src={curSongI?.img || logo} alt="" className='h-full aspect-square'/>
           </div>
 
           <section className=' w-8/12 bg-black -600 h-full flex items-center justify-around'>
